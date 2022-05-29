@@ -14,8 +14,7 @@ def test_letting(client):
     address = Address.objects.create(number=340, street='Wintergreen Avenue',
                                      city="Newport News", state="VA",
                                      zip_code="23601", country_iso_code="USA")
-    letting = Letting.objects.create(title="'Silo Studio' Cottage",
-                                     address=address)
+    Letting.objects.create(title="'Silo Studio' Cottage", address=address)
 
     url = reverse('letting', kwargs={'letting_id': 1})
     response = client.get(url)

@@ -26,7 +26,7 @@ jobs:
           command: pytest
       - run:
           name: Linting
-          command: flake8 --ignore=F841
+          command: flake8
 
 workflows:
     build:

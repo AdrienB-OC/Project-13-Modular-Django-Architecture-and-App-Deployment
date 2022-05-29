@@ -11,7 +11,7 @@ def test_index(client):
 
 def test_profile(client):
     user = User.objects.create(username='HeadlinesGazer', password="test")
-    profile = Profile.objects.create(user=user, favorite_city='Buenos Aires')
+    Profile.objects.create(user=user, favorite_city='Buenos Aires')
 
     url = reverse('profile', kwargs={'username': 'HeadlinesGazer'})
     response = client.get(url)
