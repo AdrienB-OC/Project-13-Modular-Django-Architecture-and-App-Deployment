@@ -78,3 +78,31 @@ PowerShell usage as described above except :
 
 - To activate the virtual environment `.\venv\Scripts\Activate.ps1` 
 - Replace `which <my-command>` with `(Get-Command <my-command>).Path`
+
+
+## Deployment
+This assumes you already have the containerization in place in your CircleCI project.
+- On the heroku website :
+  - Get your <API key> from `https://dashboard.heroku.com/account`
+  - Create a new app <App Name>
+  - Go the app's settings and in the Config Vars section click Reveal Config Vars and add the following variables with the corresponding values :
+    - `SECRET_KEY` - The django project's SECRET_KEY
+    - `SENTRY_DSN` - Your sentry project's DSN
+  
+- In the CircleCi project, go to settings and add the following Environment Variables :
+  - `HEROKU_API_KEY` - <API key>
+  - `HEROKU_APP_NAME` - <App Name>
+  - Trigger a build in CircleCI
+  
+- Go to `https://<App Name>.herokuapp.com` in the browser of your choice and confirm the site is running properly
+- Go to `https://<App Name>.herokuapp.com/test` to trigger an error that shoud be sent to your Sentry project
+- Go to `https://<App Name>.herokuapp.com/admin` to try the login to the admin panel using the same admin credentials
+  
+
+## Containerization
+You can run the site locally from a command prompt using the following command after you logged into docker using `docker login`:  
+  `docker run --env-file .env --rm --publish 8000:8000 docker-user/docker-project:tag`  
+Your command should look like this in practice:  
+  `docker run --env-file .env --rm --publish 8000:8000 fnrl023/projet-13:3ffccc26d559065e59784bb6974b6ad31e014c65`
+  
+You need to have a .env file with the SECRET_KEY and SENTRY_DSN values in your current folder when running this command.
