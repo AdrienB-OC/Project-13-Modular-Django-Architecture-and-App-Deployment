@@ -3,7 +3,7 @@ import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
 sentry_sdk.init(
-    dsn=os.environ['SENTRY_DSN'],
+    dsn=os.environ.get('SENTRY_DSN'),
     integrations=[DjangoIntegration()]
 )
 
