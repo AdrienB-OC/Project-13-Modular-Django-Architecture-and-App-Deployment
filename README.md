@@ -81,7 +81,7 @@ PowerShell usage as described above except :
 
 
 ## Deployment
-This assumes you already have the containerization in place in your CircleCI project.
+This assumes you already have the containerization in place in your CircleCI project and have created a sentry project.
 - On the heroku website :
   - Get your <API key> from `https://dashboard.heroku.com/account`
   - Create a new app <App Name>
