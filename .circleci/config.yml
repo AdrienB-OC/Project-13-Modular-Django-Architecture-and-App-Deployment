@@ -28,6 +28,8 @@ jobs:
           name: Linting
           command: flake8
   container:
+    docker:
+      - image: python:3.8-slim-buster
     steps:
       - checkout
       - run: echo "$DOCKERHUB_PASSWORD" | docker login --username $DOCKERHUB_USERNAME --password-stdin
