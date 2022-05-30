@@ -1,45 +1,48 @@
-## Résumé
+## Summary
 
-Site web d'Orange County Lettings
+Orange County Lettings web site
 
-## Développement local
+## Local Development
 
-### Prérequis
+### Prerequisite
 
-- Compte GitHub avec accès en lecture à ce repository
+- Github account with write access to this repository
 - Git CLI
 - SQLite3 CLI
-- Interpréteur Python, version 3.6 ou supérieure
+- Python Interpreter, version 3.6 or higher
+- Sentry account
+- Dockerhub account
+- Heroku account
+- Access to the CircleCI project `oc-lettings-site`
 
-Dans le reste de la documentation sur le développement local, il est supposé que la commande `python` de votre OS shell exécute l'interpréteur Python ci-dessus (à moins qu'un environnement virtuel ne soit activé).
+The rest of the local development documentation assumes the command `python` in your OS shell runs the above Python interpreter (unless a virtual environment is activated)
 
 ### macOS / Linux
 
-#### Cloner le repository
+#### Clone the repository
 
 - `cd /path/to/put/project/in`
-- `git clone https://github.com/OpenClassrooms-Student-Center/Python-OC-Lettings-FR.git`
+- `git clone https://github.com/AdrienB-OC/projet-13.git`
 
-#### Créer l'environnement virtuel
+#### Setup the virtual environment
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `python -m venv venv`
-- `apt-get install python3-venv` (Si l'étape précédente comporte des erreurs avec un paquet non trouvé sur Ubuntu)
-- Activer l'environnement `source venv/bin/activate`
-- Confirmer que la commande `python` exécute l'interpréteur Python dans l'environnement virtuel
-`which python`
-- Confirmer que la version de l'interpréteur Python est la version 3.6 ou supérieure `python --version`
-- Confirmer que la commande `pip` exécute l'exécutable pip dans l'environnement virtuel, `which pip`
-- Pour désactiver l'environnement, `deactivate`
+- `apt-get install python3-venv` (If the previous step has package not found errors on Ubuntu)
+- Activate the virtual environment `source venv/bin/activate`
+- Confirm the `python` command runs the virtual environment's Python interpreter `which python`
+- Confirm the Python interpreter version is >= 3.6 `python --version`
+- Confirm the `pip` command runs the virtual environment's pip `which pip`
+- To deactivate the virtual environment `deactivate`
 
-#### Exécuter le site
+#### Run the site
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
 - `pip install --requirement requirements.txt`
 - `python manage.py runserver`
-- Aller sur `http://localhost:8000` dans un navigateur.
-- Confirmer que le site fonctionne et qu'il est possible de naviguer (vous devriez voir plusieurs profils et locations).
+- Go to `http://127.0.0.1:8000` or `http://localhost:8000` in the browser of your choice.
+- Confirm the site is working and can be navigated (you should be able to see multiple profiles and lettings).
 
 #### Linting
 
@@ -47,31 +50,31 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 - `source venv/bin/activate`
 - `flake8`
 
-#### Tests unitaires
+#### Unit tests
 
 - `cd /path/to/Python-OC-Lettings-FR`
 - `source venv/bin/activate`
 - `pytest`
 
-#### Base de données
+#### Database
 
 - `cd /path/to/Python-OC-Lettings-FR`
-- Ouvrir une session shell `sqlite3`
-- Se connecter à la base de données `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données `.tables`
-- Afficher les colonnes dans le tableau des profils, `pragma table_info(Python-OC-Lettings-FR_profile);`
-- Lancer une requête sur la table des profils, `select user_id, favorite_city from
+- Open a shell session `sqlite3`
+- Connect to the database `.open oc-lettings-site.sqlite3`
+- Display tables from the database `.tables`
+- Display columns in the profiles table `pragma table_info(Python-OC-Lettings-FR_profile);`
+- Run a query on the profiles table `select user_id, favorite_city from
   Python-OC-Lettings-FR_profile where favorite_city like 'B%';`
-- `.quit` pour quitter
+- `.quit` to exit
 
-#### Panel d'administration
+#### Admin panel
 
-- Aller sur `http://localhost:8000/admin`
-- Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
+- Go to `http://localhost:8000/admin`
+- CLogin with username `admin`, password `Abc1234!`
 
 ### Windows
 
-Utilisation de PowerShell, comme ci-dessus sauf :
+PowerShell usage as described above except :
 
-- Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
-- Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+- To activate the virtual environment `.\venv\Scripts\Activate.ps1` 
+- Replace `which <my-command>` with `(Get-Command <my-command>).Path`
