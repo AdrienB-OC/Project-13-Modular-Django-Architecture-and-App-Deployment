@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  python: circleci/python@1.5.0
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   build-and-test:
@@ -25,11 +25,21 @@ jobs:
       - run: docker build -t ${DOCKERHUB_USERNAME}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1} .
       - run: docker push ${DOCKERHUB_USERNAME}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}
 
+
 workflows:
-    build:
+    build-test-and-deploy:
       jobs:
         - build-and-test
         - container:
+            requires:
+              - build-and-test
+            filters:
+              branches:
+                only:
+                  - main
+        - heroku/deploy-via-git:
+            requires:
+              - container
             filters:
               branches:
                 only:
