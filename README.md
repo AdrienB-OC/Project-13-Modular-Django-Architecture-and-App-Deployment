@@ -35,6 +35,13 @@ The rest of the local development documentation assumes the command `python` in 
 - Confirm the `pip` command runs the virtual environment's pip `which pip`
 - To deactivate the virtual environment `deactivate`
 
+#### Environment Variables
+
+Create a .env file in the project folder root and add the following :  
+`SECRET_KEY=<project's secret key>`
+`SENTRY_DSN=<your sentry project's dsn>`
+
+
 #### Run the site
 
 - `cd /path/to/Python-OC-Lettings-FR`
