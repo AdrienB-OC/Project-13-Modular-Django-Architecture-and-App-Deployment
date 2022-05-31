@@ -98,7 +98,7 @@ This assumes you already have the containerization in place in your CircleCI pro
   
 - In the CircleCi project, go to settings and add the following Environment Variables :
   - `HEROKU_API_KEY` - <API key>
-  - `HEROKU_APP_NAME` - <App Name>
+  - `HEROKU_APP_NAME` - <App Name>  (The CircleCI project should now have the following Environment Variables : `DOCKERHUB_USERNAME`, `DOCKERHUB_PASSWORD`, `SECRET_KEY`, `SENTRY_DSN`, `HEROKU_API_KEY`, `HEROKU_APP_NAME`  
   - Trigger a build in CircleCI
   
 - Go to `https://<App Name>.herokuapp.com` in the browser of your choice and confirm the site is running properly
